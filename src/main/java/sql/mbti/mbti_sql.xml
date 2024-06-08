@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mbti">
+
+	
+	<resultMap type="com.spring.mbti.vo.MbtiVo" id="mbtiVo">
+    	<result property="questionType" column="BOARD_TYPE"/>
+    	<result property="question" column="BOARD_COMMENT"/>
+    </resultMap>
+    
+    <select id="selectQuestion" parameterType="string" resultMap="mbtiVo">
+    	
+    	SELECT BOARD_COMMENT, BOARD_TYPE
+		FROM BOARD
+		WHERE BOARD_TYPE LIKE '%'|| #{type} || '%'
+    
+    </select>
+
+
+
+
+</mapper>
